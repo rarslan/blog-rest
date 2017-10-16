@@ -1,0 +1,17 @@
+{
+    "name": "tech387/blog-rest",
+    "description": "This is a simple REST-ful api for a blog",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "": "src" }
+    },
+    "authors": [
+        {
+            "name": "rarslan",
+            "email": "terminatorarslan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
