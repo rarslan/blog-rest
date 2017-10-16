@@ -1,0 +1,4 @@
+imports:
+    - { resource: parameters/development/tables.yml }
+    - { resource: dependencies/development/db.yml }
+    - { resource: dependencies/main.yml }

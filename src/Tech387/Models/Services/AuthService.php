@@ -1,6 +1,6 @@
 <?php
 
-namespace Tech387\Services\Entities;
+namespace Tech387\Models\Services;
 
 class AuthService
 {

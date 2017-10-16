@@ -1,0 +1,5 @@
+services:
+
+    factory.mapper:
+        class: 'Tech387\Core\Component\MapperFactory'
+        arguments: ['@db.pdo', '%tables%']

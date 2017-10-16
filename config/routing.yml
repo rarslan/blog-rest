@@ -1,0 +1,26 @@
+collection:
+    path: /{controller}{slash}
+    defaults:
+        action: collection
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [GET, POST]
+
+resource:
+    path: /{controller}/{id}{slash}
+    defaults:
+        action: resource
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [GET, POST, DELETE, PATCH, PUT]
+
+resource-action:
+    path: /{controller}/{id}/{action}{slash}
+    defaults:
+        action: resource
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [GET, POST]

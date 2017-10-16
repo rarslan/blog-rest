@@ -16,6 +16,9 @@
     "require": {
         "symfony/dependency-injection": "^3.3",
         "guzzlehttp/guzzle": "^6.3",
-        "symfony/routing": "3.4.x-dev"
+        "symfony/routing": "3.4.x-dev",
+        "symfony/http-foundation": "3.4.x-dev",
+        "sensio/framework-extra-bundle": "^4.0@dev",
+        "symfony/yaml": "3.4.x-dev"
     }
 }

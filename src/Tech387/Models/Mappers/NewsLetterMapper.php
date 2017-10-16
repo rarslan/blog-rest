@@ -1,6 +1,6 @@
 <?php
 
-namespace Tech387\Mappers\Entities;
+namespace Tech387\Models\Mappers;
 
 class NewsLetterMapper
 {

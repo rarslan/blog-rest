@@ -1,0 +1,5 @@
+imports:
+
+    - { resource: dependencies/common/components.yml }
+    - { resource: dependencies/common/services.yml }
+    - { resource: dependencies/common/controllers.yml }

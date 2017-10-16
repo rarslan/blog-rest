@@ -2,7 +2,7 @@
 
 namespace Tech387\Core\Mapper;
 
-class CanCreateMapper
+interface CanCreateMapper
 {
-
+    public function create(string $className);
 }
