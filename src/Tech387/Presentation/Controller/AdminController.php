@@ -4,7 +4,7 @@ namespace Tech387\Presentation\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 
-use Tech387\Services\Entities\AdminService;
+use Tech387\Models\EntitiesAdminService;
 
 
 class AdminController
