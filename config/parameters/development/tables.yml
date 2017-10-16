@@ -1,0 +1,10 @@
+parameters:
+    tables:
+        conversations:
+            primary:            '`Conversations`'
+            participants:       '`ConversationParticipants`'
+            messages:           '`ConversationMessages`'
+
+        participants:           '`Participants`'
+
+        messages:               '`Messages`'

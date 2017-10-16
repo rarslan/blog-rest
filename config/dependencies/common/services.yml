@@ -1,0 +1,6 @@
+services:
+
+    service.community:
+        class: 'Tech387\Models\Services'
+        arguments: ['@factory.mapper']
+
