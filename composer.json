@@ -13,5 +13,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "symfony/dependency-injection": "^3.3",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/routing": "3.4.x-dev"
+    }
 }
