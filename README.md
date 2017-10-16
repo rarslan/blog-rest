@@ -1,4 +1,4 @@
-# RESTful API For blog
+# RESTful API For a Blog
 
 In the diagram i have explained the architecture of the blog.
 

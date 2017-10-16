@@ -2,35 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7cd03fb-21f7-4312-b914-43ac6bfc2669" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/git/diagram.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/Config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/Config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Bootstrap/Bootstrap.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Component/DataMapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Component/MapperFactory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Exception/Controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Exception/Database.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Exception/Mapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Exception/Service.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/Mapper/CanCreateMapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Core/OAuth2Server/OAuth2.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Entities/Admin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Entities/Auth.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Entities/Blog.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Entities/NewsLetter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Mappers/AdminMapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Mappers/AuthMapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Mappers/BlogMapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Mappers/NewsLetterMapper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Services/AdminService.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Services/AuthService.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Services/BlogService.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Models/Services/NewsLetterService.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Presentation/Controller/AdminController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Presentation/Controller/AuthController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Presentation/Controller/BlogController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Presentation/Controller/NewsLetterController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Tech387/Presentation/Views/JsonRenderer.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -43,12 +14,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -61,8 +45,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -141,12 +125,12 @@
       <option name="presentableId" value="Default" />
       <updated>1508165708678</updated>
       <workItem from="1508165710064" duration="2495000" />
-      <workItem from="1508173409933" duration="299000" />
+      <workItem from="1508173409933" duration="378000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2794000" />
+    <option name="totallyTimeSpent" value="2873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -193,17 +177,6 @@
     <entry file="file://$PROJECT_DIR$/resources/git/diagram.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="225">
-            <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
@@ -443,6 +416,17 @@
         <state relative-caret-position="105">
           <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
