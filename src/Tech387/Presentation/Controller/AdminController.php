@@ -27,7 +27,8 @@ class AdminController
      */
     public function getPost()//TODO
     {
-        return ['action'=>'get_post'];
+        $post = $this->blogService->getPost();
+        return $post;
     }
 
     /**

@@ -10,6 +10,7 @@ class Blog
     private $images;
     private $tags;
     private $date;
+    private $response = [];
 
     public function setTitle($title)
     {
@@ -59,6 +60,16 @@ class Blog
     public function getDate()
     {
         return $this->date;
+    }
+
+    public function setResponse($response)
+    {
+        $this->response[] = $response;
+    }
+
+    public function getResponse(): array
+    {
+        return $this->response;
     }
 
 }

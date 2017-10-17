@@ -21,7 +21,7 @@ class MapperFactory implements CanCreateMapper
      */
     public function __construct(PDO $connection)
     {
-        $this->connection = $connection;
+        $this->connection = $connection->connect();
     }
 
 
@@ -41,7 +41,8 @@ class MapperFactory implements CanCreateMapper
             throw new RuntimeException("Mapper not found. Attempted to load '{$className}'.");
         }
 
-        $instance = new $className($this->connection, $this->configuration);
+        //pass configuration as antoher argument
+        $instance = new $className($this->connection);
         $this->cache[$className] = $instance;
 
         return $instance;

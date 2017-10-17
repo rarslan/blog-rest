@@ -1,7 +1,3 @@
-parameters:
-    pdo.error_attribute: !php/const:PDO::ATTR_ERRMODE
-    pdo.error_mode: !php/const:PDO::ERRMODE_EXCEPTION
-
 services:
 
     db.pdo:
