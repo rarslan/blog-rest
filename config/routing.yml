@@ -1,26 +1,25 @@
-collection:
+blog.user.admin:
     path: /{controller}{slash}
     defaults:
-        action: admin
+        action: post
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"
     methods: [GET, POST]
 
-resource:
+blog.admin:
     path: /{controller}/{id}{slash}
     defaults:
-        action: blog
+        action: post
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"
-    methods: [GET, POST, DELETE, PATCH, PUT]
+    methods: [PUT, DELETE]
 
-resource-action:
-    path: /{controller}/{id}/{action}{slash}
-    defaults:
-        action: resource
+blog.action.single:
+    path: /{controller}/{action}{slash}
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"
-    methods: [GET, POST]
+    methods: [POST,GET]
+

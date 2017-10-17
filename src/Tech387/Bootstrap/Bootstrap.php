@@ -24,7 +24,6 @@ class Bootstrap
         $container = new DependencyInjection\ContainerBuilder;
 
         $loader = new DependencyInjection\Loader\YamlFileLoader($container, $locator);
-        // $loader->load('config-development.yml');
         $loader->load('config-development.yml');
 
         $container->compile();
@@ -39,7 +38,7 @@ class Bootstrap
         );
 
         $parameters = $matcher->match($request->getPathInfo());
-
+        print_r($parameters);
         foreach ($parameters as $key => $value) {
             $request->attributes->set($key, $value);
         }
@@ -48,6 +47,7 @@ class Bootstrap
         $resource = "controller.{$request->get('controller')}";
 
         $controller = $container->get($resource);
+
         $data = $controller->{$command}($request);
 
         $response = new JsonResponse($data);

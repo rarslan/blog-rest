@@ -1,7 +1,7 @@
 services:
 
-    controller.admin:
+    controller.blog:
         class: 'Tech387\Presentation\Controller\AdminController'
 
-    controller.blog:
-        class: 'Tech387\Presentation\Controller\BlogController'
+    controller.auth:
+        class: 'Tech387\Presentation\Controller\AuthController'
