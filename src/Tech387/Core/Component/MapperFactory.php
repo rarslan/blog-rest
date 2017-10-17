@@ -13,18 +13,15 @@ class MapperFactory implements CanCreateMapper
 {
     private $connection;
     private $cache = [];
-    private $configuration;
 
     /**
      * Creates new factory instance
      *
      * @param PDO $connection
-     * @param array $configuration A list of table name aliases
      */
-    public function __construct(PDO $connection, array $configuration)
+    public function __construct(PDO $connection)
     {
         $this->connection = $connection;
-        $this->configuration = $configuration;
     }
 
 

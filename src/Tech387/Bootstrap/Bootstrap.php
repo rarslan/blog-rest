@@ -38,7 +38,7 @@ class Bootstrap
         );
 
         $parameters = $matcher->match($request->getPathInfo());
-        print_r($parameters);
+       
         foreach ($parameters as $key => $value) {
             $request->attributes->set($key, $value);
         }

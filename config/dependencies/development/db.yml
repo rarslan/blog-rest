@@ -5,4 +5,4 @@ parameters:
 services:
 
     db.pdo:
-        class: 'PdoCompat\Db'
+        class: 'Tech387\Core\Database\PDOCompat'

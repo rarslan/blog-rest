@@ -4,14 +4,22 @@ namespace Tech387\Presentation\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 
-use Tech387\Models\Entities\AdminService;
+use Tech387\Models\Services\AdminService;
+use Tech387\Models\Services\BlogService;
+use Tech387\Models\Services\NewsLetterService;
 
 class AdminController
 {
 
-    public function __construct()//TOOD
+    private $adminService;
+    private $blogService;
+    private $newsLetterService;
+
+    public function __construct(AdminService $adminService, BlogService $blogService, NewsLetterService $newsLetterService)
     {
-        
+        $this->adminService = $adminService;
+        $this->blogService = $blogService;
+        $this->newsLetterService = $newsLetterService;
     }
 
     /**

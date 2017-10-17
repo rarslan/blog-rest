@@ -1,6 +1,14 @@
 services:
 
-    service.community:
-        class: 'Tech387\Models\Services'
+    service.admin:
+        class: 'Tech387\Models\Services\AdminService'
+        arguments: ['@factory.mapper']
+
+    service.blog:
+        class: 'Tech387\Models\Services\BlogService'
+        arguments: ['@factory.mapper']
+
+    service.newsletter:
+        class: 'Tech387\Models\Services\NewsLetterService'
         arguments: ['@factory.mapper']
 
