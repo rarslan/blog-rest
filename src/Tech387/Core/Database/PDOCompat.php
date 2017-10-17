@@ -11,7 +11,7 @@ class PDOCompat extends PDO
 
     public function __construct()
     {   
-        $this->connection = new PDO('mysql:host=localhost;dbname=DiscusApiV2;','root','root');
+        $this->connection = new PDO('mysql:host=localhost;dbname=SpartanBlog;','root','root');
     }
 
     public function connect()

@@ -20,9 +20,11 @@ class BlogService
     /**
      * Get Post
      */
-    public function getPost()//TODO
+    public function getPost($slug)
     {
         $blog = new Blog();
+
+        $blog->setSlug($slug);
 
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
         $mapper->getPost($blog);
@@ -33,12 +35,12 @@ class BlogService
     /**
      * Get Posts
      */
-    public function getPosts()//TODO
+    public function getPosts()
     {
         $blog = new Blog();
         
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
-        $mapper->getPost($blog);
+        $mapper->getPosts($blog);
         
         return $blog->getResponse();
     }
@@ -46,12 +48,18 @@ class BlogService
     /**
      * Insert Post
      */
-    public function insertPost()//TODO
+    public function insertPost($name,$body,$tags,$images)
     {
         $blog = new Blog();
+
+        $blog->setTitle($name);
+        $blog->setSlug(preg_replace('/\s+/', '_', strtolower($name)));
+        $blog->setBody($body);
+        $blog->setTags($tags);
+        $blog->setImages($images);
         
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
-        $mapper->getPost($blog);
+        $mapper->insertPost($blog);
         
         return $blog->getResponse();
     }
@@ -59,9 +67,11 @@ class BlogService
     /**
      * Delete Post
      */
-    public function deletePost()//TODO
+    public function deletePost($slug)
     {
         $blog = new Blog();
+
+        $blog->setSlug($slug);
         
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
         $mapper->getPost($blog);

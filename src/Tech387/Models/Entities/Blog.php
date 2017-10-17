@@ -10,7 +10,8 @@ class Blog
     private $images;
     private $tags;
     private $date;
-    private $response = [];
+    private $response;
+    private $slug;
 
     public function setTitle($title)
     {
@@ -64,12 +65,22 @@ class Blog
 
     public function setResponse($response)
     {
-        $this->response[] = $response;
+        $this->response = $response;
     }
 
-    public function getResponse(): array
+    public function getResponse()
     {
         return $this->response;
+    }
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
 }

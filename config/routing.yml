@@ -5,7 +5,25 @@ blog.user.admin:
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"
-    methods: [GET, POST]
+    methods: [POST]
+
+blogs.user.admin:
+    path: /{controller}{slash}
+    defaults:
+        action: posts
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [GET]
+
+blogs.user.admin:
+    path: /{controller}/{slug}{slash}
+    defaults:
+        action: post
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [GET]
 
 blog.admin:
     path: /{controller}/{id}{slash}

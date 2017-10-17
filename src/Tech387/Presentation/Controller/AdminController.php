@@ -25,32 +25,45 @@ class AdminController
     /**
      * Get Post
      */
-    public function getPost()//TODO
+    public function getPost(Request $request)//TODO
     {
-        $post = $this->blogService->getPost();
+        $slug = $request->get('slug');
+
+        $post = $this->blogService->getPost($slug);
         return $post;
     }
 
     /**
      * Insert Post
      */
-    public function postPost()//TODO
+    public function postPost(Request $request)//TODO
     {
-        return ['action'=>'post_post'];
+        $params = json_decode($request->getContent(), true);
+ 
+        $name = $params['name'];
+        $body = $params['body'];
+        $tags = $params['tags'];
+        $images = $params['images'];
+
+        $post = $this->blogService->insertPost($name,$body,$tags,$images);
+        return $post;
     }
 
     /**
      * Delete Post
      */
-    public function deletePost()//TOOD
+    public function deletePost(Request $request)//TOOD
     {
-        return ['action'=>'delete_post'];
+        $slug = $request->get('slug');
+        
+        $post = $this->blogService->deletePost($slug);
+        return $post;
     }
 
     /**
      * Edit Post
      */
-    public function putPost()//TOOD
+    public function putPost(Request $request)//TOOD
     {
         return ['action'=>'put_post'];
     }
@@ -58,15 +71,16 @@ class AdminController
     /**
      * Get Posts
      */
-    public function getPosts()//TODO
+    public function getPosts(Request $request)//TODO
     {
-        return ['action'=>'get_posts'];
+        $post = $this->blogService->getPosts();
+        return $post;
     }
 
     /**
      * Get Suggested
      */
-    public function getSuggestions()//TODO
+    public function getSuggestions(Request $request)//TODO
     {
         return ['action'=>'get_suggested'];
     }
@@ -74,7 +88,7 @@ class AdminController
     /**
      * Insert Newsletter
      */
-    public function postNewsletter()//TOOD
+    public function postNewsletter(Request $request)//TOOD
     {
         return ['action'=>'post_newsletter'];
     }
@@ -82,7 +96,7 @@ class AdminController
     /**
      * Get Newsletter
      */
-    public function getNewsletter()//TOOD
+    public function getNewsletter(Request $request)//TOOD
     {
         return ['action'=>'get_newsletter'];
     }
