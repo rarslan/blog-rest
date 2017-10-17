@@ -1,7 +1,7 @@
 collection:
     path: /{controller}{slash}
     defaults:
-        action: collection
+        action: admin
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"
@@ -10,7 +10,7 @@ collection:
 resource:
     path: /{controller}/{id}{slash}
     defaults:
-        action: resource
+        action: blog
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"

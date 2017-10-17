@@ -3,3 +3,5 @@ services:
     controller.admin:
         class: 'Tech387\Presentation\Controller\AdminController'
 
+    controller.blog:
+        class: 'Tech387\Presentation\Controller\BlogController'

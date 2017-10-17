@@ -44,6 +44,15 @@ class Bootstrap
             $request->attributes->set($key, $value);
         }
 
+        $command = $request->getMethod() . $request->get('action');
+        $resource = "controller.{$request->get('controller')}";
+
+        $controller = $container->get($resource);
+        $data = $controller->{$command}($request);
+
+        $response = new JsonResponse($data);
+        $response->send();
+
     }
 
 }
