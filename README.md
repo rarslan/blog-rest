@@ -15,63 +15,80 @@ I tried to keep the the rule of **"Skiny Controllers and fat Models"**
 
 ### The project tree
 ```sh
- |-- config
- |   `-- Config.php
- |-- public
- |   |-- Config.php
- |   `-- index.php
- |-- resources
- |   |-- Logger
- |   |-- assets
- |   |   |-- icons
- |   |   `-- images
- |   `-- git
- |       `-- diagram.png
- `-- src
-     `-- Tech387
-         |-- Bootstrap
-         |   `-- Bootstrap.php
-         |-- Core
-         |   |-- Component
-         |   |   |-- DataMapper.php
-         |   |   `-- MapperFactory.php
-         |   |-- Exception
-         |   |   |-- Controller.php
-         |   |   |-- Database.php
-         |   |   |-- Mapper.php
-         |   |   `-- Service.php
-         |   |-- Mapper
-         |   |   `-- CanCreateMapper.php
-         |   `-- OAuth2Server
-         |       `-- OAuth2.php
-         |-- Models
-         |   |-- Entities
-         |   |   |-- Admin.php
-         |   |   |-- Auth.php
-         |   |   |-- Blog.php
-         |   |   `-- NewsLetter.php
-         |   |-- Mappers
-         |   |   |-- AdminMapper.php
-         |   |   |-- AuthMapper.php
-         |   |   |-- BlogMapper.php
-         |   |   `-- NewsLetterMapper.php
-         |   `-- Services
-         |       |-- AdminService.php
-         |       |-- AuthService.php
-         |       |-- BlogService.php
-         |       `-- NewsLetterService.php
-         `-- Presentation
-             |-- Controller
-             |   |-- AdminController.php
-             |   |-- AuthController.php
-             |   |-- BlogController.php
-             |   `-- NewsLetterController.php
-             `-- Views
-                 `-- JsonRenderer.php
+ .
+├── README.md
+├── composer.json
+├── composer.lock
+├── config
+│   ├── config-development.yml
+│   ├── dependencies
+│   │   ├── common
+│   │   │   ├── components.yml
+│   │   │   ├── controllers.yml
+│   │   │   └── services.yml
+│   │   ├── development
+│   │   │   └── db.yml
+│   │   └── main.yml
+│   ├── parameters
+│   │   └── development
+│   │       └── tables.yml
+│   └── routing.yml
+├── public
+│   └── index.php
+├── resources
+│   ├── Logger
+│   ├── assets
+│   │   ├── icons
+│   │   └── images
+│   └── git
+│       └── diagram.png
+└── src
+    └── Tech387
+        ├── Bootstrap
+        │   └── Bootstrap.php
+        ├── Core
+        │   ├── Component
+        │   │   ├── DataMapper.php
+        │   │   └── MapperFactory.php
+        │   ├── Database
+        │   │   └── PDOCompat.php
+        │   ├── Exception
+        │   │   ├── ControllerException.php
+        │   │   ├── DatabaseException.php
+        │   │   ├── MapperException.php
+        │   │   └── ServiceException.php
+        │   ├── Mapper
+        │   │   └── CanCreateMapper.php
+        │   └── OAuth2Server
+        │       └── OAuth2.php
+        ├── Models
+        │   ├── Entities
+        │   │   ├── Admin.php
+        │   │   ├── Auth.php
+        │   │   ├── Blog.php
+        │   │   └── NewsLetter.php
+        │   ├── Mappers
+        │   │   ├── AdminMapper.php
+        │   │   ├── AuthMapper.php
+        │   │   ├── BlogMapper.php
+        │   │   └── NewsLetterMapper.php
+        │   └── Services
+        │       ├── AdminService.php
+        │       ├── AuthService.php
+        │       ├── BlogService.php
+        │       └── NewsLetterService.php
+        └── Presentation
+            └── Controller
+                ├── AdminController.php
+                └── AuthController.php
 ```
 
-The `/config` folder hold the global configuration of the project.
+The `/config` folder hold yaml configurations for `services`, `controllers`, `mappers` etc....
 
 
+The database is simpe, it only holds the `post` and the `newsletter` tables.
+
+![schema](resources/git/schema.png)
+![schema1](resources/git/schema_1.png)
 
 
