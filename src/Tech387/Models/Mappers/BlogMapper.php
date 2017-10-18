@@ -60,9 +60,18 @@ class BlogMapper extends DataMapper
             );
             $images = $statement->fetchAll(PDO::FETCH_ASSOC);
             
-            $response = array_merge($data,["tags"=>$tags,"images"=>$images]);
+            if($data){
+                $response = [
+                    'status'=>200,
+                    'data'=>array_merge($data,["tags"=>$tags,"images"=>$images])
+                ];
+            }else{
+                $response = ['status'=>404,'message'=>'page not found'];
+            }
+
+
         }catch(PDOException $e){
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
 
         $blog->setResponse($response);
@@ -116,9 +125,9 @@ class BlogMapper extends DataMapper
                 
                 array_push($response,array_merge($singleData,["tags"=>$tags,"images"=>$images]));
             }
-
+            $response = ['status'=>200,'data'=>$response];
         }catch(PDOException $e){
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
 
         $blog->setResponse($response);
@@ -171,13 +180,13 @@ class BlogMapper extends DataMapper
                 );
             }
 
-            $response = ['status'=>200];
+            $response = ['status'=>200,'message'=>'successfully inserted'];
 
             $this->connection->commit();
         }catch(PDOException $e){
             $this->connection->rollback();
 
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
 
         $blog->setResponse($response);
@@ -186,7 +195,7 @@ class BlogMapper extends DataMapper
     /**
      * Delete Post
      */
-    public function deletePost(Entities\Blog $blog)//TOOD
+    public function deletePost(Entities\Blog $blog)
     {
         $response;
         try{
@@ -208,14 +217,14 @@ class BlogMapper extends DataMapper
             );
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
-
-            $response = ['status'=>200];
+            
+            $response = ['status'=>200,'message'=>'successfully deleted'];
 
             $this->connection->commit();
         }catch(PDOException $e){
             $this->connection->rollback();
 
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
 
         $blog->setResponse($response);
@@ -224,7 +233,7 @@ class BlogMapper extends DataMapper
     /**
      * Edit Post
      */
-    public function editPost(Entities\Blog $blog)//TOOD
+    public function editPost(Entities\Blog $blog)
     {
         $response;
         try{
@@ -281,13 +290,13 @@ class BlogMapper extends DataMapper
                 );
             }
 
-            $response = ['status'=>200];
+            $response = ['status'=>200,'message'=>'successfully edited'];
 
             $this->connection->commit();
         }catch(PDOException $e){
             $this->connection->rollback();
             
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
 
         $blog->setResponse($response);
@@ -296,20 +305,57 @@ class BlogMapper extends DataMapper
     /**
      * Get Suggested Posts
      */
-    public function getSuggestions(Entities\Blog $blog)//TODO
+    public function getSuggestions(Entities\Blog $blog)
     {
-        $response;
+        $response = [];
         try{
-            $sql = "";
+
+            $sql = "SELECT 
+                    id,
+                    name,
+                    slug,
+                    body,
+                    date
+                FROM post ORDER BY RAND() LIMIT 3";
             $statement = $this->connection->prepare($sql);
             $statement->execute();
+            $data = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-            $data = $statement->fetch(PDO::FETCH_ASSOC);
+            foreach($data as $singleData){
+                //Tags
+                $sql = "SELECT 
+                        name
+                    FROM tags
+                    WHERE post_id = ?";
+                $statement = $this->connection->prepare($sql);
+                $statement->execute(
+                    [
+                        $singleData['id']
+                    ]
+                );
+                $tags = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                //Images
+                $sql = "SELECT 
+                        path
+                    FROM images
+                    WHERE post_id = ?";
+                $statement = $this->connection->prepare($sql);
+                $statement->execute(
+                    [
+                        $singleData['id']
+                    ]
+                );
+                $images = $statement->fetchAll(PDO::FETCH_ASSOC);
+                
+                array_push($response,array_merge($singleData,["tags"=>$tags,"images"=>$images]));
+            }
+            $response = ['status'=>200,'data'=>$response];
         }catch(PDOException $e){
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
 
-        $blog->setResponse($data);
+        $blog->setResponse($response);
     }
 
 }

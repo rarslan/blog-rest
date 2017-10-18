@@ -82,7 +82,7 @@ class BlogService
     /**
      * Edit Post
      */
-    public function editPost($id,$name,$body,$tags,$images)//TODO
+    public function editPost($id,$name,$body,$tags,$images)
     {
         $blog = new Blog();
         
@@ -102,12 +102,12 @@ class BlogService
     /**
      * Get Suggested
      */
-    public function getSuggestions()//TODO
+    public function getSuggestions()
     {
         $blog = new Blog();
         
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
-        $mapper->getPost($blog);
+        $mapper->getSuggestions($blog);
         
         return $blog->getResponse();
     }

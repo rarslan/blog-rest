@@ -27,15 +27,15 @@ class NewsLetterMapper extends DataMapper
                 ]
             );
 
-            $response = ['status'=>200];
+            $response = ['status'=>200,'message'=>'successflly added'];
 
             $this->connection->commit();
         }catch(PDOException $e){
             $this->connection->rollback();
 
-            $response = $e->getMessage();
+            $response = ['status'=>200,'message'=>$e->getMessage()];
         }
-        die(print_r($response));
+
         $newsLetter->setResponse($response);
     }
 
@@ -51,7 +51,7 @@ class NewsLetterMapper extends DataMapper
             $statement->execute();
             $newsletters = $statement->fetchAll(PDO::FETCH_ASSOC);
             
-            $response = $newsletters;
+            $response = ['status'=>200,'data'=>$newsletters];
       
         }catch(PDOException $e){
             $response = $e->getMessage();

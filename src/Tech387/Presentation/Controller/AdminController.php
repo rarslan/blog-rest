@@ -90,15 +90,16 @@ class AdminController
     /**
      * Get Suggested
      */
-    public function getSuggestions(Request $request)//TODO
+    public function getSuggestions(Request $request)
     {
-        return ['action'=>'get_suggested'];
+        $post = $this->blogService->getSuggestions();
+        return $post;
     }
 
     /**
      * Insert Newsletter
      */
-    public function postNewsletter(Request $request)//TOOD
+    public function postNewsletter(Request $request)
     {
         $params = json_decode($request->getContent(), true);
         
@@ -111,7 +112,7 @@ class AdminController
     /**
      * Get Newsletter
      */
-    public function getNewsletter(Request $request)//TOOD
+    public function getNewsletter(Request $request)
     {
         $newsletter = $this->newsLetterService->getMails();
         return $newsletter;
