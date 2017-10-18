@@ -25,7 +25,7 @@ class AdminController
     /**
      * Get Post
      */
-    public function getPost(Request $request)//TODO
+    public function getPost(Request $request)
     {
         $slug = $request->get('slug');
 
@@ -36,7 +36,7 @@ class AdminController
     /**
      * Insert Post
      */
-    public function postPost(Request $request)//TODO
+    public function postPost(Request $request)
     {
         $params = json_decode($request->getContent(), true);
  
@@ -52,9 +52,9 @@ class AdminController
     /**
      * Delete Post
      */
-    public function deletePost(Request $request)//TOOD
+    public function deletePost(Request $request)
     {
-        $slug = $request->get('slug');
+        $slug = $request->get('id');
         
         $post = $this->blogService->deletePost($slug);
         return $post;
@@ -63,15 +63,25 @@ class AdminController
     /**
      * Edit Post
      */
-    public function putPost(Request $request)//TOOD
+    public function putPost(Request $request)
     {
-        return ['action'=>'put_post'];
+        $params = json_decode($request->getContent(), true);
+        
+        $id = $request->get('id');
+
+        $name = $params['name'];
+        $body = $params['body'];
+        $tags = $params['tags'];
+        $images = $params['images'];
+
+        $post = $this->blogService->editPost($id,$name,$body,$tags,$images);
+        return $post;
     }
 
     /**
      * Get Posts
      */
-    public function getPosts(Request $request)//TODO
+    public function getPosts(Request $request)
     {
         $post = $this->blogService->getPosts();
         return $post;

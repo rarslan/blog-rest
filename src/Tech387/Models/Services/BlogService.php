@@ -67,14 +67,14 @@ class BlogService
     /**
      * Delete Post
      */
-    public function deletePost($slug)
+    public function deletePost($id)
     {
         $blog = new Blog();
 
-        $blog->setSlug($slug);
+        $blog->setId($id);
         
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
-        $mapper->getPost($blog);
+        $mapper->deletePost($blog);
         
         return $blog->getResponse();
     }
@@ -82,12 +82,19 @@ class BlogService
     /**
      * Edit Post
      */
-    public function editPost()//TODO
+    public function editPost($id,$name,$body,$tags,$images)//TODO
     {
         $blog = new Blog();
         
+        $blog->setId($id);
+        $blog->setTitle($name);
+        $blog->setSlug(preg_replace('/\s+/', '_', strtolower($name)));
+        $blog->setBody($body);
+        $blog->setTags($tags);
+        $blog->setImages($images);
+
         $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
-        $mapper->getPost($blog);
+        $mapper->editPost($blog);
         
         return $blog->getResponse();
     }

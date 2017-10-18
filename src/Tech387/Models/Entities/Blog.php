@@ -5,6 +5,7 @@ namespace Tech387\Models\Entities;
 class Blog
 {
 
+    private $id;
     private $title;
     private $body;
     private $images;
@@ -12,6 +13,16 @@ class Blog
     private $date;
     private $response;
     private $slug;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function setTitle($title)
     {

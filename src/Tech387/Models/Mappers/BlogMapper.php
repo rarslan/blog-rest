@@ -199,15 +199,17 @@ class BlogMapper extends DataMapper
             FROM post AS p
             INNER JOIN images AS i ON i.post_id = p.id
             INNER JOIN tags AS t ON t.post_id = p.id
-            WHERE t.slug = ?";
+            WHERE t.id = ?";
             $statement = $this->connection->prepare($sql);
             $statement->execute(
                 [
-                    $blog->getSlug()
+                    $blog->getId()
                 ]
             );
 
             $data = $statement->fetch(PDO::FETCH_ASSOC);
+
+            $response = ['status'=>200];
 
             $this->connection->commit();
         }catch(PDOException $e){
@@ -216,7 +218,7 @@ class BlogMapper extends DataMapper
             $response = $e->getMessage();
         }
 
-        $blog->setResponse($data);
+        $blog->setResponse($response);
     }
 
     /**
@@ -228,11 +230,58 @@ class BlogMapper extends DataMapper
         try{
             $this->connection->beginTransaction();
 
-            $sql = "";
+            $sql = "UPDATE post SET name = ?,body = ? WHERE id = ?";
             $statement = $this->connection->prepare($sql);
-            $statement->execute();
+            $statement->execute(
+                [
+                    $blog->getTitle(),
+                    $blog->getBody(),
+                    $blog->getId()
+                ]
+            );
+        
+            //Clear tags
+            $sql = "DELETE FROM tags WHERE post_id = ?";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute(
+                [
+                    $blog->getId()
+                ]
+            );
+            //Clear images
+            $sql = "DELETE FROM images WHERE post_id = ?";
+            $statement = $this->connection->prepare($sql);
+            $statement->execute(
+                [
+                    $blog->getId()
+                ]
+            );
 
-            $data = $statement->fetch(PDO::FETCH_ASSOC);
+            //Insert tags
+            $sql = "INSERT INTO tags(post_id,name) VALUES(?,?)";
+            foreach($blog->getTags() as $tag){
+                $statement = $this->connection->prepare($sql);
+                $statement->execute(
+                    [
+                        $blog->getId(),
+                        $tag
+                    ]
+                );
+            }
+
+            //Insert images
+            $sql = "INSERT INTO images(path,post_id) VALUES(?,?)";
+            foreach($blog->getImages() as $image){
+                $statement = $this->connection->prepare($sql);
+                $statement->execute(
+                    [
+                        $image,
+                        $blog->getId()
+                    ]
+                );
+            }
+
+            $response = ['status'=>200];
 
             $this->connection->commit();
         }catch(PDOException $e){
@@ -241,7 +290,7 @@ class BlogMapper extends DataMapper
             $response = $e->getMessage();
         }
 
-        $blog->setResponse($data);
+        $blog->setResponse($response);
     }
 
     /**
