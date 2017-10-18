@@ -100,7 +100,12 @@ class AdminController
      */
     public function postNewsletter(Request $request)//TOOD
     {
-        return ['action'=>'post_newsletter'];
+        $params = json_decode($request->getContent(), true);
+        
+        $mail = $params['mail'];
+        
+        $newsletter = $this->newsLetterService->insertMail($mail);
+        return $newsletter;
     }
 
     /**
@@ -108,7 +113,8 @@ class AdminController
      */
     public function getNewsletter(Request $request)//TOOD
     {
-        return ['action'=>'get_newsletter'];
+        $newsletter = $this->newsLetterService->getMails();
+        return $newsletter;
     }
 
 }

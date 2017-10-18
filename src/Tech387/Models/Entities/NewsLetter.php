@@ -5,7 +5,7 @@ namespace Tech387\Models\Entities;
 class NewsLetter
 {
     private $mail;
-    private $date;
+    private $response;
 
     public function setMail($mail)
     {
@@ -17,14 +17,13 @@ class NewsLetter
         return $this->mail;
     }
 
-    public function setDate($date)
+    public function setResponse($response)
     {
-        $this->date = $date;
+        $this->response = $response;
     }
 
-    public function getDate()
+    public function getResponse()
     {
-        return $this->date;
+        return $this->response;
     }
-
 }
