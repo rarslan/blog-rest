@@ -91,4 +91,6 @@ The database is simpe, it only holds the `post` and the `newsletter` tables.
 ![schema](resources/git/schema.png)
 ![schema1](resources/git/schema_1.png)
 
+###### Spetial thanks to [Mārtiņš Tereško](https://github.com/teresko) for helping me undarstand the MVC pattern.
+
 
