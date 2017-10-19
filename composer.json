@@ -14,8 +14,10 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "google/apiclient": "^2.0@dev",
+        "bshaffer/oauth2-server-php": "~1.8",
         "symfony/dependency-injection": "^3.3",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.2@dev",
         "symfony/routing": "3.4.x-dev",
         "symfony/http-foundation": "3.4.x-dev",
         "sensio/framework-extra-bundle": "^4.0@dev",

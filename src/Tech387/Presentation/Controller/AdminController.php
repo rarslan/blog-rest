@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Tech387\Models\Services\AdminService;
 use Tech387\Models\Services\BlogService;
 use Tech387\Models\Services\NewsLetterService;
+use Tech387\Models\Services\AuthService;
 
 class AdminController
 {
@@ -14,12 +15,14 @@ class AdminController
     private $adminService;
     private $blogService;
     private $newsLetterService;
+    private $authService;
 
-    public function __construct(AdminService $adminService, BlogService $blogService, NewsLetterService $newsLetterService)
+    public function __construct(AdminService $adminService, BlogService $blogService, NewsLetterService $newsLetterService, AuthService $authService)
     {
         $this->adminService = $adminService;
         $this->blogService = $blogService;
         $this->newsLetterService = $newsLetterService;
+        $this->authService = $authService;
     }
 
     /**

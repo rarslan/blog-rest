@@ -1,3 +1,4 @@
+#Blog Controller
 blog.user.admin:
     path: /{controller}{slash}
     defaults:
@@ -27,6 +28,16 @@ blogs.user.admin:
     path: /{controller}/{action}/{slug}{slash}
     defaults:
         action: post
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [GET]
+
+#Auth Controller
+auth.admin:
+    path: /{controller}/{action}/{slug}{slash}
+    defaults:
+        action: auth
     requirements:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"

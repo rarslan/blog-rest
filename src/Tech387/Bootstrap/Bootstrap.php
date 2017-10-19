@@ -56,14 +56,16 @@ class Bootstrap
             }catch(\Error $e){
                 $data = [
                     'status'=>404,
-                    'message'=>'Not found'
+                    'message'=>'Not found',
+                    'info'=>$e->getMessage()
                 ];
             }
 
         }catch(\Symfony\Component\Routing\Exception\MethodNotAllowedException $e){
             $data = [
                 'status'=>404,
-                'message'=>'Not found'
+                'message'=>'Not found',
+                'info'=>$e->getMessage()
             ];
         }
 

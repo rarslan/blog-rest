@@ -2,7 +2,8 @@ services:
 
     controller.blog:
         class: 'Tech387\Presentation\Controller\AdminController'
-        arguments: ['@service.admin', '@service.blog', '@service.newsletter']
+        arguments: ['@service.admin', '@service.blog', '@service.newsletter','@service.auth']
         
     controller.auth:
         class: 'Tech387\Presentation\Controller\AuthController'
+        arguments: ['@service.auth']

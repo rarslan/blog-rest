@@ -5,10 +5,24 @@ namespace Tech387\Models\Entities;
 class Auth
 {
 
+    private $userId;
     private $name;
     private $email;
     private $image;
     private $password;
+    private $code;
+    private $payload;
+    private $response;
+
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
 
     public function setName($name)
     {
@@ -48,6 +62,36 @@ class Auth
     public function  getPassword()
     {
         return $this->password;
+    }
+
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    public function setPayload($payload)
+    {
+        $this->payload = $payload;
+    }
+
+    public function getPayload()
+    {
+        return $this->payload;
+    }
+
+    public function setResponse($response)
+    {
+        $this->response = $response;
+    }
+
+    public function getResponse()
+    {
+        return $this->response;
     }
 
 }

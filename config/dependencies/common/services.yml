@@ -12,3 +12,7 @@ services:
         class: 'Tech387\Models\Services\NewsLetterService'
         arguments: ['@factory.mapper']
 
+    service.auth:
+        class: 'Tech387\Models\Services\AuthService'
+        arguments: ['@factory.mapper']
+

@@ -16,16 +16,4 @@ class AdminService
         $this->factory = $factory;
     }
 
-
-    public function storeAdmin(int $accountId): Admin
-    {
-        $admin = new Admin;
-        $admin->setAccountId($accountId);
-
-        $mapper = $this->factory->create(Mappers\AdminMapper::class);
-
-        $mapper->store($admin);
-
-        return $admin;
-    }
 }

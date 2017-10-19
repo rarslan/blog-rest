@@ -1,3 +1,4 @@
 imports:
+    - { resource: dependencies/general.yml }
     - { resource: dependencies/development/db.yml }
     - { resource: dependencies/main.yml }
