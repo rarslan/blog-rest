@@ -71,8 +71,6 @@ class Bootstrap
 
         $response = new JsonResponse($data);
 
-
-
         $response->send();
     }
 

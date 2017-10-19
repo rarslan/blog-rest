@@ -41,15 +41,23 @@ class AdminController
      */
     public function postPost(Request $request)
     {
-        $params = json_decode($request->getContent(), true);
  
-        $name = $params['name'];
-        $body = $params['body'];
-        $tags = $params['tags'];
-        $images = $params['images'];
-
-        $post = $this->blogService->insertPost($name,$body,$tags,$images);
-        return $post;
+        if($this->authService->handleRequestValidity()){
+            $params = json_decode($request->getContent(), true);
+            
+            $name = $params['name'];
+            $body = $params['body'];
+            $tags = $params['tags'];
+            $images = $params['images'];
+    
+            $post = $this->blogService->insertPost($name,$body,$tags,$images);
+            return $post;
+        }
+        return [
+            'status'=>406,
+            'message'=>'access not allowed'
+        ];
+        
     }
 
     /**
@@ -57,10 +65,17 @@ class AdminController
      */
     public function deletePost(Request $request)
     {
-        $slug = $request->get('id');
-        
-        $post = $this->blogService->deletePost($slug);
-        return $post;
+        if($this->authService->handleRequestValidity()){
+            $slug = $request->get('id');
+            
+            $post = $this->blogService->deletePost($slug);
+            return $post;
+        }
+
+        return [
+            'status'=>406,
+            'message'=>'access not allowed'
+        ];
     }
 
     /**
@@ -68,17 +83,24 @@ class AdminController
      */
     public function putPost(Request $request)
     {
-        $params = json_decode($request->getContent(), true);
-        
-        $id = $request->get('id');
+        if($this->authService->handleRequestValidity()){
+            $params = json_decode($request->getContent(), true);
+            
+            $id = $request->get('id');
 
-        $name = $params['name'];
-        $body = $params['body'];
-        $tags = $params['tags'];
-        $images = $params['images'];
+            $name = $params['name'];
+            $body = $params['body'];
+            $tags = $params['tags'];
+            $images = $params['images'];
 
-        $post = $this->blogService->editPost($id,$name,$body,$tags,$images);
-        return $post;
+            $post = $this->blogService->editPost($id,$name,$body,$tags,$images);
+            return $post;
+        }
+
+        return [
+            'status'=>406,
+            'message'=>'access not allowed'
+        ];
     }
 
     /**
@@ -117,8 +139,15 @@ class AdminController
      */
     public function getNewsletter(Request $request)
     {
-        $newsletter = $this->newsLetterService->getMails();
-        return $newsletter;
+        if($this->authService->handleRequestValidity()){
+            $newsletter = $this->newsLetterService->getMails();
+            return $newsletter;
+        }
+
+        return [
+            'status'=>406,
+            'message'=>'access not allowed'
+        ];
     }
 
 }

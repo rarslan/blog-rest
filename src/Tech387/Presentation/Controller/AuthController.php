@@ -26,7 +26,7 @@ class AuthController
     {
         $callback = $request->get('code');
         $post = $this->authService->callback($callback);
-
+        
         if(isset($post['url'])){
             header("Location:".$post['url']); 
             exit();

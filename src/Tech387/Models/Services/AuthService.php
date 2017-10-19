@@ -42,7 +42,7 @@ class AuthService
     /**
      * Get Login Link
      */
-    public function getLogin()//TODO
+    public function getLogin()
     {
         $auth = new Auth();
 
@@ -55,7 +55,7 @@ class AuthService
     /**
      * Callback
      */
-    public function callback($callback)//TODO
+    public function callback($callback)
     {
         $auth = new Auth();
 
@@ -82,13 +82,13 @@ class AuthService
             //check is user is in database
             $mapper->getUserName($auth);
             
+            //if exsists assign set name
             if(isset($auth->getResponse()['username'])){
                 $auth->setName($auth->getResponse()['username']);
             }
+
             //auth
-            //TODO
             $response = $this->getUserAccessToken('client_id','client_secret',$auth->getName(),'password');
-            
             $response = json_decode($response,true);
  
             if(isset($response['access_token'])){
@@ -143,22 +143,6 @@ class AuthService
     }
 
     /**
-     * Handle Access Token
-     */
-    public function handleAccessToken()//TODO
-    {
- 
-    }
-
-    /**
-     * Refresh Access Token
-     */
-    public function refreshAccessToken()//TODO
-    {
-
-    }
-
-    /**
      * Get User Access Token
      */
     public function getUserAccessToken($clientId,$clientSecret,$userName,$password)
@@ -186,4 +170,11 @@ class AuthService
         return $response->getBody()->getContents();
     }
 
+    /**
+     * Handle Request Validity
+     */
+    public function handleRequestValidity()
+    {
+        return $this->server->verifyResourceRequest(\OAuth2\Request::createFromGlobals());
+    }   
 }
