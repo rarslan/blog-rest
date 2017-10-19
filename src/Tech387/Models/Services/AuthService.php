@@ -84,12 +84,7 @@ class AuthService
             
             if(isset($auth->getResponse()['username'])){
                 $auth->setName($auth->getResponse()['username']);
-                
-            }else{
-                //user doesnt exsist
-                return 'kurcina';
             }
-
             //auth
             //TODO
             $response = $this->getUserAccessToken('client_id','client_secret',$auth->getName(),'password');
@@ -97,12 +92,23 @@ class AuthService
             $response = json_decode($response,true);
  
             if(isset($response['access_token'])){
-                return 'vratio access token';
+                return [
+                    'status'=>200,
+                    'url'=>$this->configuration['frontend_url'].'?access_token='.$response['access_token'].'&refresh_token='.$response['refresh_token']
+                ];
             }
-            return 'kurcina';
+            
+            //Not working being redirected
+            return [
+                'status'=>300,
+                'url'=>$this->configuration['frontend_url'].'?error=Error while login'
+            ];
         }
-        
-        return 'kurcina';
+        //Not working being redirected
+        return [
+            'status'=>300,
+            'url'=>$this->configuration['frontend_url'].'?error=Error while login'
+        ];
     }
 
     /**

@@ -10,7 +10,7 @@ use Symfony\Component\Routing;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class Bootstrap
 {
@@ -70,6 +70,9 @@ class Bootstrap
         }
 
         $response = new JsonResponse($data);
+
+
+
         $response->send();
     }
 
