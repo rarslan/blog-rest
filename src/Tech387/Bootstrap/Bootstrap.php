@@ -37,37 +37,43 @@ class Bootstrap
             $context
         );
 
-        //Check if route exsists
         try{
-            //Try to load method if exsists
+            //Check if route exsists
             try{
-                $parameters = $matcher->match($request->getPathInfo());
-                
-                foreach ($parameters as $key => $value) {
-                    $request->attributes->set($key, $value);
+                //Try to load method if exsists
+                try{
+                    $parameters = $matcher->match($request->getPathInfo());
+                    
+                    foreach ($parameters as $key => $value) {
+                        $request->attributes->set($key, $value);
+                    }
+            
+                    $command = $request->getMethod() . $request->get('action');
+                    $resource = "controller.{$request->get('controller')}";
+            
+                    $controller = $container->get($resource);
+            
+                    $data = $controller->{$command}($request);
+                }catch(\Error $e){
+                    $data = [
+                        'status'=>404,
+                        'message'=>'Not found'
+                    ];
                 }
-        
-                $command = $request->getMethod() . $request->get('action');
-                $resource = "controller.{$request->get('controller')}";
-        
-                $controller = $container->get($resource);
-        
-                $data = $controller->{$command}($request);
-            }catch(\Error $e){
+
+            }catch(\Symfony\Component\Routing\Exception\MethodNotAllowedException $e){
                 $data = [
                     'status'=>404,
-                    'message'=>'Not found',
-                    'info'=>$e->getMessage()
+                    'message'=>'Not found'
                 ];
             }
-
-        }catch(\Symfony\Component\Routing\Exception\MethodNotAllowedException $e){
+        }catch(ResourceNotFoundException $e){
             $data = [
                 'status'=>404,
-                'message'=>'Not found',
-                'info'=>$e->getMessage()
+                'message'=>'Not found'
             ];
         }
+
 
         $response = new JsonResponse($data);
 
