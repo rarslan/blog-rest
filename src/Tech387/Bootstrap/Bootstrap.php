@@ -38,35 +38,28 @@ class Bootstrap
         );
 
         try{
-            //Check if route exsists
-            try{
-                //Try to load method if exsists
-                try{
-                    $parameters = $matcher->match($request->getPathInfo());
-                    
-                    foreach ($parameters as $key => $value) {
-                        $request->attributes->set($key, $value);
-                    }
+            $parameters = $matcher->match($request->getPathInfo());
             
-                    $command = $request->getMethod() . $request->get('action');
-                    $resource = "controller.{$request->get('controller')}";
-            
-                    $controller = $container->get($resource);
-            
-                    $data = $controller->{$command}($request);
-                }catch(\Error $e){
-                    $data = [
-                        'status'=>404,
-                        'message'=>'Not found'
-                    ];
-                }
-
-            }catch(\Symfony\Component\Routing\Exception\MethodNotAllowedException $e){
-                $data = [
-                    'status'=>404,
-                    'message'=>'Not found'
-                ];
+            foreach ($parameters as $key => $value) {
+                $request->attributes->set($key, $value);
             }
+    
+            $command = $request->getMethod() . $request->get('action');
+            $resource = "controller.{$request->get('controller')}";
+    
+            $controller = $container->get($resource);
+    
+            $data = $controller->{$command}($request);
+        }catch(\Error $e){
+            $data = [
+                'status'=>404,
+                'message'=>'Not found'
+            ];
+        }catch(\Symfony\Component\Routing\Exception\MethodNotAllowedException $e){
+            $data = [
+                'status'=>404,
+                'message'=>'Not found'
+            ];
         }catch(ResourceNotFoundException $e){
             $data = [
                 'status'=>404,
@@ -74,9 +67,10 @@ class Bootstrap
             ];
         }
 
-
+        
         $response = new JsonResponse($data);
-
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        
         $response->send();
     }
 
