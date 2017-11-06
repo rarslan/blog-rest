@@ -11,6 +11,14 @@ class BlogMapper extends DataMapper
 {
 
     /**
+     * Get configuration
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
+    }
+
+    /**
      * Get Post
      */
     public function getPost(Entities\Blog $blog)

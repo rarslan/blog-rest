@@ -127,11 +127,30 @@ class AdminController
      */
     public function postImage(Request $request)
     {
-        $file = $request->files->get('image'); 
+        if($this->authService->handleRequestValidity()){
+            $file = $request->files->get('image'); 
+            
+            $post = $this->blogService->postImage($file);
+            return $post;
+        }
+
+        return [
+            'status'=>406,
+            'message'=>'access not allowed'
+        ];
+
+    }  
+    
+    /**
+     * Get image
+     */
+    public function getImage(Request $request)
+    {
+        $name = $request->get('slug');
+        $get = $this->blogService->getImage($name);
         
-        $post = $this->blogService->postImage($file);
-        return $post;
-    }   
+        return $get;
+    }
 
     /**
      * Insert Newsletter

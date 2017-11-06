@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Bootstrap
 {
@@ -67,8 +68,17 @@ class Bootstrap
             ];
         }
 
-        
-        $response = new JsonResponse($data);
+        //Display Image
+        if(isset($data['image'])){
+            $response = new Response();
+            $file = $data['image'];
+            $response->headers->set('Content-Type', 'image/jpeg');
+            $response->setContent(file_get_contents($file));
+        }else{
+            $response = new JsonResponse($data);
+        }
+
+        //Set cors headers
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         

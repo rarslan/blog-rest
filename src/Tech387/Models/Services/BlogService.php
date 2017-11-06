@@ -118,13 +118,32 @@ class BlogService
      */
     public function postImage($file)
     {
+        $blog = new Blog();
+        
+        $mapper = $this->factory->create(\Tech387\Models\Mappers\BlogMapper::class);
+        $config = $mapper->getConfiguration();
         try{
-            $name = $file->getClientOriginalName();
-            $file->move(__DIR__, $name); 
+            $name = str_replace(' ', '-', strtolower($file->getClientOriginalName()));
+            $name = microtime(true)."-".$name;
+
+            $file->move(__DIR__."/../../../../resources/assets/images/", $name); 
         }catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e){
             return ['status'=>409,'message'=>'Conflict while uploading.'];
         }   
-        return $name;
+        return ['status'=>200,'path'=>$config['url']."/blog/image/".$name];
+    }
+
+    /**
+     * Read Image
+     */
+    public function getImage($name)
+    {
+        try{
+            $path = __DIR__."/../../../../resources/assets/images/".$name;
+        }catch(\Exception $e){
+            return ['status'=>409,'message'=>'Conflict while reading image'];
+        }
+        return ['status'=>200,'image'=>$path];
     }
 
 }
