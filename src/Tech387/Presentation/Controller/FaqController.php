@@ -19,7 +19,7 @@ class FaqController
         $this->authService = $authService;
     }
 
-    public function postFaq(Request $request)
+    public function post(Request $request)
     {
         if($this->authService->handleRequestValidity()){
 
@@ -37,7 +37,7 @@ class FaqController
         ];
     }
 
-    public function putFaq(Request $request)
+    public function put(Request $request)
     {
         if($this->authService->handleRequestValidity()){
             $id = $request->get('id');
@@ -56,13 +56,13 @@ class FaqController
         ];
     }
 
-    public function getFaq(Request $request)
+    public function get(Request $request)
     {
         $get = $this->faqService->getFaq();
         return $get;
     }
 
-    public function deleteFaq(Request $request)
+    public function delete(Request $request)
     {
         if($this->authService->handleRequestValidity()){
             $id = $request->get('id');

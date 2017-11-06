@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Bootstrap
 {
@@ -74,10 +75,16 @@ class Bootstrap
 
         //Display Image
         if(isset($data['image'])){
+
             $response = new Response();
             $file = $data['image'];
-            $response->headers->set('Content-Type', 'image/jpeg');
-            $response->setContent(file_get_contents($file));//TODO
+            if(file_exists($file)){
+                $response->headers->set('Content-Type', 'image/jpeg');
+                $response->setContent(file_get_contents($file));//TODO
+            }else{
+                $response = new JsonResponse(['status'=>409,'message'=>'unable to read image']);
+            }
+            
         }else{
             $response = new JsonResponse($data);
         }

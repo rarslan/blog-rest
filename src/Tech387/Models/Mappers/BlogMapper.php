@@ -57,7 +57,8 @@ class BlogMapper extends DataMapper
 
             //Images
             $sql = "SELECT 
-                    path
+                    path,
+                    description
                 FROM images
                 WHERE post_id = ?";
             $statement = $this->connection->prepare($sql);
@@ -120,7 +121,8 @@ class BlogMapper extends DataMapper
 
                 //Images
                 $sql = "SELECT 
-                        path
+                        path,
+                        description
                     FROM images
                     WHERE post_id = ?";
                 $statement = $this->connection->prepare($sql);
@@ -177,12 +179,13 @@ class BlogMapper extends DataMapper
             }
             
             //insert post images
-            $sql = "INSERT INTO images(path,post_id) VALUES(?,?)";
+            $sql = "INSERT INTO images(path,description,post_id) VALUES(?,?,?)";
             foreach($blog->getImages() as $image){
                 $statement = $this->connection->prepare($sql);
                 $statement->execute(
                     [
-                        $image,
+                        $image['image'],
+                        $image['description'],
                         $postId
                     ]
                 );
@@ -194,7 +197,7 @@ class BlogMapper extends DataMapper
         }catch(PDOException $e){
             $this->connection->rollback();
 
-            $response = ['status'=>409,'message'=>'Conflict while inserting'];
+            $response = ['status'=>409,'message'=>'Conflict while inserting','info'=>$e->getMessage()];
         }
 
         $blog->setResponse($response);
@@ -287,12 +290,13 @@ class BlogMapper extends DataMapper
             }
 
             //Insert images
-            $sql = "INSERT INTO images(path,post_id) VALUES(?,?)";
+            $sql = "INSERT INTO images(path,description,post_id) VALUES(?,?,?)";
             foreach($blog->getImages() as $image){
                 $statement = $this->connection->prepare($sql);
                 $statement->execute(
                     [
-                        $image,
+                        $image['image'],
+                        $image['description'],
                         $blog->getId()
                     ]
                 );
@@ -345,7 +349,8 @@ class BlogMapper extends DataMapper
 
                 //Images
                 $sql = "SELECT 
-                        path
+                        path,
+                        description
                     FROM images
                     WHERE post_id = ?";
                 $statement = $this->connection->prepare($sql);

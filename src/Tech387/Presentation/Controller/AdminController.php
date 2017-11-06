@@ -40,7 +40,7 @@ class AdminController
     /**
      * Insert Post
      */
-    public function postPost(Request $request)
+    public function post(Request $request)
     {
  
         if($this->authService->handleRequestValidity()){

@@ -13,6 +13,7 @@ class Blog
     private $date;
     private $response;
     private $slug;
+    private $description;
 
     public function setId($id)
     {
@@ -92,6 +93,16 @@ class Blog
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }   
+
+    public function getDescription()
+    {
+        return $this->description;
     }
 
 }
