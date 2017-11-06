@@ -186,7 +186,7 @@ class BlogMapper extends DataMapper
         }catch(PDOException $e){
             $this->connection->rollback();
 
-            $response = ['status'=>200,'message'=>$e->getMessage()];
+            $response = ['status'=>409,'message'=>'Conflict while inserting'];
         }
 
         $blog->setResponse($response);
@@ -224,7 +224,7 @@ class BlogMapper extends DataMapper
         }catch(PDOException $e){
             $this->connection->rollback();
 
-            $response = ['status'=>200,'message'=>$e->getMessage()];
+            $response = ['status'=>409,'message'=>'Conflict while deleting.'];
         }
 
         $blog->setResponse($response);
@@ -296,7 +296,7 @@ class BlogMapper extends DataMapper
         }catch(PDOException $e){
             $this->connection->rollback();
             
-            $response = ['status'=>200,'message'=>$e->getMessage()];
+            $response = ['status'=>409,'message'=>'Conflict while editing.'];
         }
 
         $blog->setResponse($response);

@@ -25,6 +25,7 @@ class AuthController
     public function getCallback(Request $request)
     {
         $callback = $request->get('code');
+       
         $post = $this->authService->callback($callback);
         
         if(isset($post['url'])){

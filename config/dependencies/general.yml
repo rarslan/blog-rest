@@ -2,6 +2,6 @@ parameters:
     general:
       client_id: '362956891805-hmqj6lgavi0isugju9fvbu0e3aa07lqb.apps.googleusercontent.com'
       client_secret: 'Ie1Szp6vKj2nUFUlkztGNaGy'
-      redirect_url: 'http://blog.com.192.168.1.104.xip.io:9000/auth/callback'
-      url: 'http://blog.com.192.168.1.104.xip.io:9000'
+      redirect_url: 'http://blog.com.192.168.1.103.xip.io:9000/auth/callback'
+      url: 'http://blog.com.192.168.1.103.xip.io:9000'
       frontend_url: 'https://stackoverflow.com/'

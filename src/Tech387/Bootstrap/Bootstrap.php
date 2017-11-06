@@ -70,6 +70,7 @@ class Bootstrap
         
         $response = new JsonResponse($data);
         $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         
         $response->send();
     }

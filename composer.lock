@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "461de71f5a5a47d93c5da2026c1d4e5b",
+    "content-hash": "df370519d96a25b94de28af6ade883b0",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -1789,12 +1789,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "6db4a8ddcd86146761130989eb348451de03de74"
+                "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/6db4a8ddcd86146761130989eb348451de03de74",
-                "reference": "6db4a8ddcd86146761130989eb348451de03de74",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/dac8d7db537bac7ad8143eb11360a8c2231f251a",
+                "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a",
                 "shasum": ""
             },
             "require": {
@@ -1830,7 +1830,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-02 06:49:52"
+            "time": "2017-11-05 16:10:10"
         },
         {
             "name": "symfony/framework-bundle",
@@ -2409,7 +2409,8 @@
         "symfony/routing": 20,
         "symfony/http-foundation": 20,
         "sensio/framework-extra-bundle": 20,
-        "symfony/yaml": 20
+        "symfony/yaml": 20,
+        "symfony/finder": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

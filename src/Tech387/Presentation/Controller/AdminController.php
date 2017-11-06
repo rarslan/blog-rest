@@ -8,6 +8,7 @@ use Tech387\Models\Services\AdminService;
 use Tech387\Models\Services\BlogService;
 use Tech387\Models\Services\NewsLetterService;
 use Tech387\Models\Services\AuthService;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class AdminController
 {
@@ -120,6 +121,17 @@ class AdminController
         $post = $this->blogService->getSuggestions();
         return $post;
     }
+
+    /**
+     * Upload Image
+     */
+    public function postImage(Request $request)
+    {
+        $file = $request->files->get('image'); 
+        
+        $post = $this->blogService->postImage($file);
+        return $post;
+    }   
 
     /**
      * Insert Newsletter

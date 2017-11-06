@@ -6,6 +6,7 @@ use Tech387\Models\Mappers;
 use Tech387\Core\Mapper\CanCreateMapper;
 use Tech387\Models\Entities\Admin;
 use Tech387\Models\Entities\Blog;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class BlogService
 {
@@ -110,6 +111,20 @@ class BlogService
         $mapper->getSuggestions($blog);
         
         return $blog->getResponse();
+    }
+
+    /**
+     * Upload Image
+     */
+    public function postImage($file)
+    {
+        try{
+            $name = $file->getClientOriginalName();
+            $file->move(__DIR__, $name); 
+        }catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e){
+            return ['status'=>409,'message'=>'Conflict while uploading.'];
+        }   
+        return $name;
     }
 
 }
