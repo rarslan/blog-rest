@@ -16,3 +16,7 @@ services:
         class: 'Tech387\Models\Services\AuthService'
         arguments: ['@factory.mapper']
 
+    service.faq:
+        class: 'Tech387\Models\Services\FaqService'
+        arguments: ['@factory.mapper']
+

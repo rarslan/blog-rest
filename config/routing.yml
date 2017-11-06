@@ -1,3 +1,13 @@
+#Faq Controller
+faq.user.admin:
+    path: /{controller}{slash}
+    defaults:
+        action: faq
+    requirements:
+        id: "[1-9][0-9]*"
+        slash: "[/]{0,1}"
+    methods: [POST,GET,PUT,DELETE]
+
 #Blog Controller
 blog.user.admin:
     path: /{controller}{slash}
@@ -42,4 +52,6 @@ auth.admin:
         id: "[1-9][0-9]*"
         slash: "[/]{0,1}"
     methods: [GET]
+
+
 

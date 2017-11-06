@@ -7,3 +7,7 @@ services:
     controller.auth:
         class: 'Tech387\Presentation\Controller\AuthController'
         arguments: ['@service.auth']
+
+    controller.faq:
+        class: 'Tech387\Presentation\Controller\FaqController'
+        arguments: ['@service.faq','@service.auth']

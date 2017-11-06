@@ -49,22 +49,26 @@ class Bootstrap
             $resource = "controller.{$request->get('controller')}";
     
             $controller = $container->get($resource);
-    
             $data = $controller->{$command}($request);
+
+            
         }catch(\Error $e){
             $data = [
                 'status'=>404,
-                'message'=>'Not found'
+                'message'=>'Not found',
+                'info'=>$e->getMessage()
             ];
         }catch(\Symfony\Component\Routing\Exception\MethodNotAllowedException $e){
             $data = [
                 'status'=>404,
-                'message'=>'Not found'
+                'message'=>'Not found',
+                'info'=>$e->getMessage()
             ];
         }catch(ResourceNotFoundException $e){
             $data = [
                 'status'=>404,
-                'message'=>'Not found'
+                'message'=>'Not found',
+                'info'=>$e->getMessage()
             ];
         }
 
@@ -73,7 +77,7 @@ class Bootstrap
             $response = new Response();
             $file = $data['image'];
             $response->headers->set('Content-Type', 'image/jpeg');
-            $response->setContent(file_get_contents($file));
+            $response->setContent(file_get_contents($file));//TODO
         }else{
             $response = new JsonResponse($data);
         }
